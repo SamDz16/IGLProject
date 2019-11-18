@@ -1,2 +1,2 @@
 # IGLProject
-Project for IGL- Students are allowed to permute in ESI between groups, the Admin can proceed to do the permutations
+Project for IGL- Students are allowed to permute in ESI between groups due to our application. The Admin can proceed to permute between two students if the conditions matched.
