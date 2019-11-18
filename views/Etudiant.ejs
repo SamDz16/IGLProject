@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Informations etudiant</title>
+</head>
+<body>
+    <h1>Vueillez introduire les informations suivantes : </h1>
+    <br>
+    <form action="/Etudiant" method="post">
+        <h3>Nom : </h3>
+        <input type="text" name="nom" id="" placeholder="Nom" required>
+        <h3>Prenom : </h3>
+        <input type="text" name="prenom" id="" placeholder="Prenom" required>
+        <h3>Matricule : </h3>
+        <input type="text" name="matricule" id="" placeholder="Matricule" required>
+        <h3>Email : </h3>
+        <input type="email" name="email" id="" placeholder="Email" required>
+        <h3>Groupe actuel : </h3>
+        <input type="number" name="grA" id="" placeholder="Groupe actuel" required>
+        <h3>Groupe voulu : </h3>
+        <input type="number" name="grV" id="" placeholder="Groupe voulu" required>
+        <br> <br> <br>
+        <input type="submit" value="Envoyer">
+    </form>
+</body>
+</html>

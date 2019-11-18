@@ -1,0 +1,22 @@
+body {
+	background-color: skyblue;
+	font-family: verdana;
+	color: white;
+}
+
+h1 {
+	font-size: 42px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+p {
+	font-size: 10px;
+	text-align: center;
+}
+
+form {
+	font-size: 10px;
+	text-align: center;
+}
