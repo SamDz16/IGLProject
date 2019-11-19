@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="style.css">
+    <!--<script src="../server.js"></script>-->
     <title>Choix Utilisatuer</title>
 </head>
 <body>
     <form action="/" method="post">
         <h1>Veuillez selectionnez le mode d'utilisateur : </h1>
-        <select class="option1">
-            <option>Administrateur</option>
-            <option>Etudiant</option>
+        <select id="choix" onchange="getSelectedValue();">
+            <option value= "Administrateur">Administrateur</option>
+            <option value = "Etudiant">Etudiant</option>
         </select>
         <br><br><br><br>
         <input type="submit" value="Suivant">
     </form>
+
+    <script>
+    function getSelectedValue(choix){
+        choix = document.getElementById('choix').value;
+        
+    }
+    </script>
 </body>
 </html>
+
+
