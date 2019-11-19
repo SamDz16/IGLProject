@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/style.css">
     <title>Informations etudiant</title>
 </head>
 <body>
     <h1>Vueillez introduire les informations suivantes : </h1>
     <br>
-    <form action="/Etudiant" method="post">
+    <form action="/" method="post">
         <h3>Nom : </h3>
         <input type="text" name="nom" id="" placeholder="Nom" required>
         <h3>Prenom : </h3>
@@ -24,8 +24,8 @@
         <h3>Groupe voulu : </h3>
         <input type="number" name="grV" id="" placeholder="Groupe voulu" required>
         <br> <br> <br>
-        <input type="reset" value="Effacer">
-        <input type="submit" value="Envoyer">
+        <input type="reset" value="Effacer" id="btn">
+        <input type="submit" value="Envoyer" id="btn">
     </form>
 </body>
 </html>

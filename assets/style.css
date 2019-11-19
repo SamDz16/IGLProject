@@ -15,8 +15,20 @@ p {
 	font-size: 10px;
 	text-align: center;
 }
-/* 
+
 form {
 	font-size: 10px;
 	text-align: center;
-} */
+	/* padding: 20px; */
+}
+#choice {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 20px;
+	padding: 5px;
+	margin: 5px;
+}
+
+#btn {
+	margin-right: 20px;
+	margin-left: 20px;
+}
