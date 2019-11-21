@@ -1,34 +1,20 @@
-//Requirements
 var express = require('express');
 var server = express();
+var path = require('path');
 var bodyParser = require('body-parser');
+const MongoClient = require ('mongodb').MongoClient; 
 
-//Uses
-server.use('/assets', express.static('./assets'));
-server.use(bodyParser.urlencoded({ extend: true }));
-//server.use(bodyParser.json);
-
-//View Engine - EJS
-server.set('view engine', 'ejs');
-
-//Routers
-server.get('/', function(req, res) {
-	res.render('choixUtilisateur');
+MongoClient.connect ('mongodb://localhost:27017', (err,client)=>{
+	console.log('connected to mongo'); 
+	let db=client.db('demande'); 
+	client.close();
+});
+server.get('/', function(req, res, next) {
+	res.sendFile(path.join(__dirname, 'interface', 'Etudiant.html'));
 });
 
-server.post('/', (req, res, next) => {
-	var choice = req.body;
-	if (choice.admin == 'on') {
-		//** Something to develop**//
-	} else {
-		res.redirect('student');
-	}
+server.post('/Etudiant', bodyParser.urlencoded({ extend: true }), (req, res, next) => {
+	res.send(req.body);
 });
-
-server.get('/student', function(req, res) {
-	res.render('Etudiant');
-});
-//Listening to port
-server.listen(7000, () => {
+server.listen(7000,'127.0.0.1');
 	console.log('The server is listening ...');
-});
