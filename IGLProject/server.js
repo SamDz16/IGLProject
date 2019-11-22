@@ -4,17 +4,65 @@ var path = require('path');
 var bodyParser = require('body-parser');
 const MongoClient = require ('mongodb').MongoClient; 
 
-MongoClient.connect ('mongodb://localhost:27017', (err,client)=>{
-	console.log('connected to mongo'); 
-	let db=client.db('demande'); 
-	client.close();
-});
+server.set ('view engine','ejs'); 
+
+
 server.get('/', function(req, res, next) {
-	res.sendFile(path.join(__dirname, 'interface', 'Etudiant.html'));
-});
+	res.render('Etudiant')});
+
+	
+
+
+
+server.post('/Consultation', function(req, res, next) {
+	MongoClient.connect ('mongodb://localhost:27017/IGL', (err,client)=>{
+		console.log('connected to mongo'); 
+		const db=client.db(); 
+		db.collection ('demande').find().toArray().then(demande=>{
+			console.log(demande)
+			res.render('Consultation',{ 
+				demande:demande // res.send (demande)
+			}) // quand il clique sur le button consulter
+		})
+		client.close();
+		}) 
+
+}); 
+
+	
+//server.post('/Consultation', bodyParser.urlencoded({ extend: true }), (req, res, next) => {
+	
+
+//})	
+
+
+
 
 server.post('/Etudiant', bodyParser.urlencoded({ extend: true }), (req, res, next) => {
-	res.send(req.body);
+	
+	MongoClient.connect ('mongodb://localhost:27017/IGL', (err,client)=>{
+	console.log('connected to mongo'); 
+	const db=client.db(); 
+	db.collection ('demande').insertOne({  
+		nom :req.body.nom,
+		prenom :req.body.prenom ,
+		matricule :+req.body.matricule,
+		email :req.body.email,  
+		groupeA :+req.body.grA, 
+		groupeV: +req.body.grV
+
+	}).then (result=> { 
+		console.log ('votre demande a été enregistré');
+		//res.redirect (307,'/Consultation'); // on retourne à la page principale , la page du formulaire  
+		res.redirect ('/');
+	}) 
+	
+
+	client.close();
 });
-server.listen(7000,'127.0.0.1');
+}); 
+	
+
+
+server.listen(3001,'127.0.0.1');
 	console.log('The server is listening ...');
