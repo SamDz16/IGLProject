@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="popupS.css">
     <title>Informations etudiant</title>
 </head>
 <body>
     <h1>Vueillez introduire les informations suivantes : </h1>
     <br>
-    <form action="/" method="post">
+    <form action="/student" method="POST">
         <h3>Nom : </h3>
         <input type="text" name="nom" id="" placeholder="Nom" required>
         <h3>Prenom : </h3>
@@ -27,5 +28,11 @@
         <input type="reset" value="Effacer" id="btn">
         <input type="submit" value="Envoyer" id="btn">
     </form>
+
+    <script src="">
+        popupS.alert({
+			content: 'Your request has been successfully saved !'
+            });
+    </script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+{
+  "name": "iglproject",
+  "version": "1.0.0",
+  "description": "Project for IGL- Students are allowed to permute in ESI between groups due to our application. The Admin can proceed to permute between two students if the conditions matched.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamDz16/IGLProject.git"
+  },
+  "author": "HENDEL - AMROUCHE - MEBARKI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamDz16/IGLProject/issues"
+  },
+  "homepage": "https://github.com/SamDz16/IGLProject#readme",
+  "dependencies": {
+    "alert-node": "^2.0.3",
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.4",
+    "mongodb": "^3.3.4",
+    "nodemon": "^2.0.1",
+    "popups": "^1.1.3"
+  }
+}
