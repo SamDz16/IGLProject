@@ -54,3 +54,14 @@ server.post('/student', bodyParser.urlencoded({ extend: true }), (req, res) => {
 server.listen(7000, () => {
 	console.log('The server is listening on port 7000 ...');
 });
+
+
+// For Unit Tests
+module.exports = {
+	sayTestsAreWorking: function(){
+		return "Tests are working";
+	},
+	addNumbers: function(number1, number2){
+		return number1 + number2;
+	}
+}
