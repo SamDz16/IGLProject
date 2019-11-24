@@ -10,7 +10,7 @@ server.set ('view engine','ejs');
 server.get('/', function(req, res, next) {
 	res.render('Etudiant')});
 
-	
+//comm	
 
 
 
