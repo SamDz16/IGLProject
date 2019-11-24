@@ -1,67 +1,68 @@
-//Requirements
 var express = require('express');
 var server = express();
+var path = require('path');
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient;
+const MongoClient = require ('mongodb').MongoClient; 
 
-//Uses
-server.use('/assets', express.static('./assets'));
-//server.use(bodyParser.urlencoded({ extend: true }));
+server.set ('view engine','ejs'); 
 
-//View Engine - EJS
-server.set('view engine', 'ejs');
 
-//Routers
-server.get('/', function(req, res) {
-	res.render('choixUtilisateur');
-});
+server.get('/', function(req, res, next) {
+	res.render('Etudiant')});
 
-server.post('/', bodyParser.urlencoded({ extend: true }), (req, res) => {
-	var choice = req.body;
-	if (choice.admin == 'on') {
-		//** Something to develop**//
-	} else {
-		res.redirect('/student');
-	}
-});
+	
 
-server.get('/student', function(req, res) {
-	res.render('Etudiant');
-});
 
-server.post('/student', bodyParser.urlencoded({ extend: true }), (req, res) => {
-	MongoClient.connect('mongodb://localhost:27017/IGL', (err, client) => {
-		console.log('connected to mongo');
-		const db = client.db('StudentsRequests');
-		db
-			.collection('Request')
-			.insertOne({
-				Nom: req.body.nom,
-				Prenom: req.body.prenom,
-				Matricule: req.body.matricule,
-				Email: req.body.email,
-				GroupeA: +req.body.grA,
-				GroupeV: +req.body.grV
-			})
-			.then((result) => {
-				res.redirect('/');
-			});
 
+server.post('/Consultation', function(req, res, next) {
+	MongoClient.connect ('mongodb://localhost:27017/IGL', (err,client)=>{
+		console.log('connected to mongo'); 
+		const db=client.db(); 
+		db.collection ('demande').find().toArray().then(demande=>{
+			console.log(demande)
+			res.render('Consultation',{ 
+				demande:demande // res.send (demande)
+			}) // quand il clique sur le button consulter
+		})
 		client.close();
-	});
+		}) 
+
+}); 
+
+	
+//server.post('/Consultation', bodyParser.urlencoded({ extend: true }), (req, res, next) => {
+	
+
+//})	
+
+
+
+
+server.post('/Etudiant', bodyParser.urlencoded({ extend: true }), (req, res, next) => {
+	
+	MongoClient.connect ('mongodb://localhost:27017/IGL', (err,client)=>{
+	console.log('connected to mongo'); 
+	const db=client.db(); 
+	db.collection ('demande').insertOne({  
+		nom :req.body.nom,
+		prenom :req.body.prenom ,
+		matricule :+req.body.matricule,
+		email :req.body.email,  
+		groupeA :+req.body.grA, 
+		groupeV: +req.body.grV
+
+	}).then (result=> { 
+		console.log ('votre demande a été enregistré');
+		
+		res.redirect ('/');
+	}) 
+	
+
+	client.close();
 });
-
-server.listen(7000, () => {
-	console.log('The server is listening on port 7000 ...');
-});
+}); 
+	
 
 
-// For Unit Tests
-module.exports = {
-	sayTestsAreWorking: function(){
-		return "Tests are working";
-	},
-	addNumbers: function(number1, number2){
-		return number1 + number2;
-	}
-}
+server.listen(3001,'127.0.0.1');
+	console.log('The server is listening ...');
