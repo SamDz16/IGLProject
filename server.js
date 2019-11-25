@@ -10,7 +10,7 @@ server.set ('view engine','ejs');
 server.get('/', function(req, res, next) {
 	res.render('Etudiant')});
 
-//comm	
+	
 
 
 
@@ -63,7 +63,15 @@ server.post('/Etudiant', bodyParser.urlencoded({ extend: true }), (req, res, nex
 });
 }); 
 	
+// la partie admin 
+ 
+server.get('/admin', function(req, res, next) {
+	res.render('admin')});
 
 
+
+
+
+//la partie serveur
 server.listen(3001,'127.0.0.1');
 	console.log('The server is listening ...');
