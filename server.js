@@ -43,15 +43,16 @@ server.post('/Etudiant', bodyParser.urlencoded({ extend: true }), (req, res, nex
 	MongoClient.connect ('mongodb://localhost:27017/IGL', (err,client)=>{
 	console.log('connected to mongo'); 
 	const db=client.db(); 
-	db.collection ('demande').insertOne({  
+	db.collection ('demande').updateOne({ email :req.body.email},  
+		{$set:{
 		nom :req.body.nom,
 		prenom :req.body.prenom ,
-		matricule :+req.body.matricule,
-		email :req.body.email,  
+		matricule :+req.body.matricule, 
 		groupeA :+req.body.grA, 
 		groupeV: +req.body.grV
 
-	}).then (result=> { 
+	}},
+	{upsert:true}).then (result=> { 
 		console.log ('votre demande a été enregistré');
 		
 		res.redirect ('/');
