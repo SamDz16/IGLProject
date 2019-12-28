@@ -10,12 +10,18 @@
 </head>
 
 <body>
-    <h1>la liste des demandes de permutations : </h1>
+    <h1>La liste des demandes de permutations : </h1>
 
     <ul>
         <% for (let dem of demande ) { %>
-        <%=dem.nom%>
+        <%=dem.nom %> <br>
+        <%=dem.prenom %> <br>
+        <%=dem.matricule %> <br>
+        <%=dem.email %> <br>
+        <%=dem.groupeA %> <br>
+        <%=dem.groupeV %> <br>
+        <hr>
         <%}%>
     </ul>
-          
+
 </body>

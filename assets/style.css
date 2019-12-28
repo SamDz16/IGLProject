@@ -21,6 +21,7 @@ form {
 	text-align: center;
 	/* padding: 20px; */
 }
+
 #choice {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 20px;
@@ -36,4 +37,8 @@ form {
 ul {
 	font-size: 30px;
 	text-align: center;
+}
+
+input[type="number"] {
+	width: 170px;
 }
