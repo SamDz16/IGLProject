@@ -100,10 +100,10 @@ server.post('/etudiant', bodyParser.urlencoded({
 
 server.post('/Consultation', function (req, res, next) {
 	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', (err, client) => {
-		console.log('connected to mongo');
+		// console.log('connected to mongo');
 		const db = client.db();
 		db.collection('requests').find().toArray().then((demande) => {
-			console.log(demande);
+			// console.log(demande);
 			res.render('Consultation', {
 				demande: demande // res.send (demande)
 			}); // Quand il clique sur le button consulter
