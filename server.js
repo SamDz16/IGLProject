@@ -1,11 +1,12 @@
+//Requires
 var express = require('express');
 var server = express();
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Astudent = require('./models/student');
 mongoose.set('useFindAndModify', false);
+const Astudent = require('./models/student');
+const functionPermuter = require('./function/permuter');
 const MongoClient = require('mongodb').MongoClient;
-module.exports = server
 
 //View Engine - EJS
 server.set('view engine', 'ejs');
@@ -19,13 +20,17 @@ server.get('/', function (req, res, next) {
 });
 
 server.post('/', bodyParser.urlencoded({
-	extend: true
+	extended: true
 }), (req, res) => {
 	var choice = req.body;
 	if (choice.admin == 'on') {
 		res.redirect('/admin');
 	} else {
-		res.redirect('/etudiant');
+		if (choice.student == 'on') {
+			res.redirect('/etudiant');
+		} else {
+			res.redirect('/');
+		}
 	}
 });
 
@@ -34,7 +39,7 @@ server.get('/etudiant', function (req, res) {
 });
 
 server.post('/etudiant', bodyParser.urlencoded({
-	extend: true
+	extended: true
 }), (req, res, next) => {
 
 	//Connect to database
@@ -45,8 +50,10 @@ server.post('/etudiant', bodyParser.urlencoded({
 
 	//Testing the connection to the database
 	mongoose.connection.once('open', () => {
-		console.log("Connected to the database");
-
+		/**
+		 * Student information
+		 * @type {object} 
+		 */
 		var student = new Astudent({
 			nom: req.body.nom,
 			prenom: req.body.prenom,
@@ -55,6 +62,7 @@ server.post('/etudiant', bodyParser.urlencoded({
 			groupeA: parseInt(req.body.grA),
 			groupeV: parseInt(req.body.grV)
 		});
+
 		if (student.groupeA != student.groupeV) {
 			Astudent.findOne({
 				matricule: student.matricule,
@@ -65,12 +73,32 @@ server.post('/etudiant', bodyParser.urlencoded({
 					student
 						.save()
 						.then(() => {
-							console.log('The student is added to the database');
+
+							console.log('The student : ' + student.nom + ' has been added to the database successfully');
+
+							Astudent.countDocuments({}, function (err, numberDoc) {
+
+								console.log(numberDoc);
+
+								var numberDocCopy = numberDoc;
+								if (numberDocCopy >= 2) {
+
+									console.log('\n\nLaunching the permutation function ...');
+									functionPermuter();
+
+								} else {
+									if (numberDocCopy == 0) {
+										console.log("The database is empty !")
+									} else {
+										//numberDocCopy == 1
+										console.log('There is just one student in the database')
+									}
+								}
+							})
 						})
 				} else {
-					console.log(req.body)
-					console.log(result)
-					// The matricule is the same => the student exists & result =! null
+
+					// The matricule is the same => the student exists
 					//The student is going to be updated !
 					Astudent.findOneAndUpdate({
 						nom: result.nom,
@@ -88,9 +116,10 @@ server.post('/etudiant', bodyParser.urlencoded({
 						console.log('The student has been successfully updated !')
 					})
 				}
+
 			})
 		} else {
-			console.log('You entered the same groupe !')
+			console.log('You entered the same group !')
 		}
 		res.redirect('/');
 	}).on('error', (error) => {
@@ -105,19 +134,19 @@ server.post('/Consultation', function (req, res, next) {
 		db.collection('requests').find().toArray().then((demande) => {
 			// console.log(demande);
 			res.render('Consultation', {
-				demande: demande // res.send (demande)
-			}); // Quand il clique sur le button consulter
+				demande: demande
+			});
 		});
 		client.close();
 	});
 });
 
-//La partie admin
+//Admin part
 server.get('/admin', function (req, res, next) {
-	res.render('admin');
+	res.render('admin')
 });
 
-//La partie serveur
+//Server part
 server.listen(7000, () => {
 	console.log('The server is listening ...');
 });

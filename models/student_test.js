@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
-//Create the shema of a student
+/**
+ * Create the schema of the student for testing 
+ * {@link student_permuts}
+ */
 
 const studentSchema = new schema({
     nom: String,
@@ -12,8 +15,15 @@ const studentSchema = new schema({
     groupeV: Number
 });
 
-//Create the model of the student
+/**
+ * Create the model of the student for testing */
+
 
 const student_test = mongoose.model('test', studentSchema);
 
+/**
+ * Module the student schema for testing.
+ *
+ * @type {const}
+ */
 module.exports = student_test;

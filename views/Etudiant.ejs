@@ -13,6 +13,14 @@
 <body>
     <h1>Vueillez introduire les informations suivantes : </h1>
     <br>
+    <form action="/Consultation" method="POST">
+        <button type="submit" id="btn">Consulter</button>
+    </form>
+    <br>
+    <form action="/" method="POST">
+        <input type="submit" value="Acceuil" id="btn">
+    </form>
+    <br>
     <form action="/etudiant" method="POST">
         <h3>Nom : </h3>
         <input type="text" name="nom" id="" placeholder="Nom" required>
@@ -30,12 +38,6 @@
         <input type="reset" value="Effacer" id="btn">
         <input type="submit" value="Envoyer" id="btn">
     </form>
-
-    <script src="">
-        popupS.alert({
-            content: 'Your request has been successfully saved !'
-        });
-    </script>
 </body>
 
 </html>
