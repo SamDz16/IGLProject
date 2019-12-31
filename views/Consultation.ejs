@@ -11,7 +11,10 @@
 
 <body>
     <h1>La liste des demandes de permutations : </h1>
-
+    <br>
+    <form action="/" method="POST">
+        <input type="submit" value="Acceuil" id="btn">
+    </form>
     <ul>
         <% for (let dem of demande ) { %>
         <%=dem.nom %> <br>

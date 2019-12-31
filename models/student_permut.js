@@ -8,8 +8,7 @@ const studentSchema = new schema({
     prenom: String,
     matricule: String,
     email: String,
-    groupeA: Number,
-    groupeV: Number
+    groupeA: Number
 });
 
 //Create the model of the student
