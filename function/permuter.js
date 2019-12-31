@@ -2,8 +2,14 @@
 const mongoose = require('mongoose');
 const Astudent = require('../models/student');
 const StudentPermut = require('../models/student_permut');
-mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', false); 
+
+ /**
+ * permuter module
+ * @module permuter
+ */
 /**
+ * 
  * first we get the last student added to the database than research for the compatible student with him in our database 
  * if we found a matching result than the permutation is possible 
  *   we delete the student found from our database and permute his group with the student added previously
@@ -45,7 +51,15 @@ var permuter = function () {
                         matricule: result2.matricule
                     }).then(function () {
                         console.log("The student : " + result2.nom + " has been removed successfully")
-                      
+                        /**
+                            * student 1 information
+                            * @typedef {Object} Student1
+                            * @property {String}familyname - Student  familyname
+                            * @property {string} name - Student name
+                            * @property {string|number} [matricule] - 
+                            * @property {String} email - Student's email
+                            * @property {number} [groupeA] - Student group 
+                            */
                         var student1 = new StudentPermut({
                             nom: result1.nom,
                             prenom: result1.prenom,
@@ -55,7 +69,16 @@ var permuter = function () {
                         })
                         student1.save().then(function () {
                             console.log("the student : " + result1.nom + " has been added to the permuts collection")
-
+                            /**
+                            * student 2 information
+                            * @typedef {Object} Student2
+                            * @property {String}familyname - Student  familyname
+                            * @property {string} name - Student name
+                            * @property {string|number} [matricule] - 
+                            * @property {String} email - Student's email
+                            * @property {number} [groupeA] - Student group 
+                             */
+                             
                             var student2 = new StudentPermut({
                                 nom: result2.nom,
                                 prenom: result2.prenom,
