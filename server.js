@@ -128,7 +128,9 @@ server.post('/etudiant', bodyParser.urlencoded({
 })
 
 server.post('/Consultation', function (req, res, next) {
-	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', (err, client) => {
+	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', {
+		useUnifiedTopology: true
+	}, (err, client) => {
 		// console.log('connected to mongo');
 		const db = client.db();
 		db.collection('requests').find().toArray().then((demande) => {
