@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: models/student_permut.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,37 +17,54 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: models/student_permut.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>IGLProject</h1>
-<p>Project for IGL- Students are allowed to permute in ESI between groups due to our application. The Admin can proceed to permute between two students if the conditions matched.</p></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
+const schema = mongoose.Schema;
+
+/**
+ * Create the schema of the student 
+ /**
+                            * student 1 information
+                            * @typedef {Object} Student1
+                            * @property {String}familyname - Student  familyname
+                            * @property {string} name - Student name
+                            * @property {string|number} [matricule] - 
+                            * @property {String} email - Student's email
+                            * @property {number} [groupeA] - Student group 
+*/
+ 
+
+const studentSchema = new schema({
+    nom: String,
+    prenom: String,
+    matricule: String,
+    email: String,
+    groupeA: Number
+});
+
+/**
+ * Create the model of the student
+ */
+
+
+const student_permut = mongoose.model('permut', studentSchema);
+
+/**
+ * Module the student schema.
+ *
+ * @type {const}
+ */
+module.exports = student_permut;</code></pre>
+        </article>
     </section>
-
-
 
 
 
