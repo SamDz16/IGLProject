@@ -50,7 +50,10 @@ server.post('/etudiant', bodyParser.urlencoded({
 
 	//Testing the connection to the database
 	mongoose.connection.once('open', () => {
-
+       /**
+		* Student information
+		* @type {object} 
+		*/
 		var student = new Astudent({
 			nom: req.body.nom,
 			prenom: req.body.prenom,
