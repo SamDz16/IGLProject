@@ -1,6 +1,6 @@
 {
     "source": {
-        "include": ["./function","./models","./test"],
+        "include": ["./function","./models","./test","server.js","./auto_test"],
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|docs)"
     },
@@ -10,8 +10,8 @@
     "opts": {
         "encoding": "utf8",
         "readme": "./readme.md",
-        "destination": "./docs/"
-        
+        "destination": "./docs/",
+        "tutorials" :"./tutorials"
         
     }
 }
