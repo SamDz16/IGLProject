@@ -1,14 +1,13 @@
 version: '3'
-services:
-        web:
-            image: nodejs-app
-            build: .
-            command: "node server.js"
-            ports: 
-                - "9001:7000"
-            depends_on: 
-                - "mongo"
-        mongo:
-            image: "mongo"
-            ports: 
-                - "27017:27017"
+services: 
+    web:
+        image: node-mongo-app
+        build: .
+        ports: 
+            - '7000:7000'
+        depends_on: 
+            - mongo
+    mongo:
+        image: mongo
+        ports:
+            - '27017:27017'
