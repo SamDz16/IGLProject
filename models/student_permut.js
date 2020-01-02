@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 /**
- * Create the schema of the student 
+ * Create the schema of the student */
  /**
-                            * student 1 information
+                            * student  information
                             * @typedef {Object} Student1
                             * @property {String}familyname - Student  familyname
                             * @property {string} name - Student name
