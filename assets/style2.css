@@ -10,13 +10,11 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 270px;
+  width: 150px;
   height: 100vh;
   background: #1a1a1a;
   text-align: center;
-  transform-origin: left;
-  transform: perspective(1200px)rotateY(90deg);
-  transition: all 400ms ease;
+ 
 }
 
 .back {

@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/style2.css" type="text/css" />
-  <script type="text/javascript" src="../time_lamiss.js/script_daay.js"></script>
+  
   <!-- Style et script  du calendrier -->
   <link rel="stylesheet" href="../assets/calendar1.css" type="text/css" />
-  <script type="text/javascript" src="../time_lamiss.js/calendar.js"></script>
+ 
   <!-- icon de la page -->
   <!-- <link rel="SHORTCUT ICON" href="./icon.png" /> -->
   <!-- ******** -->
 </head>
 
-<body onload="refresh_jour();refresh_date();refresh_mois()">
+<body >
   <div class="back">
     <img src="../images/back6.jpg" alt="stage">
   </div>
@@ -31,11 +31,7 @@
       <li><a href="deconnexion.php"><i class="fa fa-power-off"></i><br />Deconnexion</a></li>
     </ul>
   </div>
-  <div id="toggle-btn" onclick="toggleSidebar(this)">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+ 
   <div class="box">
     <a href="../views/Etudiant.ejs"><button class="button" style="vertical-align:middle"><span><i
             class="fa fa-wpforms"></i>
@@ -55,13 +51,7 @@
 
 
 
-  <!-- Calendrier -->
-  <time class="icon">
-    <em id="jour"></em>
-    <strong id="mois"></strong>
-    <span id="date"></span>
-  </time>
-  <!-- *************** -->
+ 
 
 </body>
 
