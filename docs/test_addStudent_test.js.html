@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/student_test.js</title>
+    <title>JSDoc: Source: test/addStudent_test.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/student_test.js</h1>
+    <h1 class="page-title">Source: test/addStudent_test.js</h1>
 
     
 
@@ -26,35 +26,43 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+            <pre class="prettyprint source linenums"><code>/** 
+ * See {@tutorial test-tutorials}
+ * @module AddStudentTest */ 
 
-/**
- * Create the schema of the student for testing 
- * {@link student_permuts}
- */
-
-const studentSchema = new schema({
-    nom: String,
-    prenom: String,
-    matricule: String,
-    email: String,
-    groupeA: Number,
-    groupeV: Number
-});
-
-/**
- * Create the model of the student for testing */
+ 
 
 
-const student_test = mongoose.model('test', studentSchema);
+const assert = require('assert'); 
 
-/**
- * Module the student schema for testing.
- *
- * @type {const}
- */
-module.exports = student_test;</code></pre>
+const Astudent = require('../models/student_test');
+   
+
+
+
+
+describe("Add New Student To The Database", () => {
+   
+    it('OK, adds new student to the permutation database', (done) => {
+    
+        var student = new Astudent({
+            nom: 'studentName',
+            prenom: 'studentLastName',
+            matricule: '17/000',
+            email: 'ex_exemple@esi.dz',
+            groupeA: 5,
+            groupeV: 1
+        });
+
+        student
+            .save()
+            .then(() => {
+                assert(student.isNew === false);
+                done();
+            })
+    })
+}) 
+</code></pre>
         </article>
     </section>
 

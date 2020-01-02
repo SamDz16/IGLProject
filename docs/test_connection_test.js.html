@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/student_test.js</title>
+    <title>JSDoc: Source: test/connection_test.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/student_test.js</h1>
+    <h1 class="page-title">Source: test/connection_test.js</h1>
 
     
 
@@ -26,35 +26,37 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+            <pre class="prettyprint source linenums"><code>/** 
+ * See {@tutorial test-tutorials}
+ * @module Connection_to_database */ 
 
-/**
- * Create the schema of the student for testing 
- * {@link student_permuts}
- */
-
-const studentSchema = new schema({
-    nom: String,
-    prenom: String,
-    matricule: String,
-    email: String,
-    groupeA: Number,
-    groupeV: Number
-});
-
-/**
- * Create the model of the student for testing */
+const mongoose = require('mongoose');
 
 
-const student_test = mongoose.model('test', studentSchema);
+//Connect to the database before any tests
+before((done) => {
 
-/**
- * Module the student schema for testing.
- *
- * @type {const}
- */
-module.exports = student_test;</code></pre>
+    //Connect to database
+    mongoose.connect('mongodb://localhost:27017/TEST', {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    });
+
+    //Testing the connection to the database
+    mongoose.connection.once('open', () => {
+        console.log("Connected to the database");
+        done();
+    }).on('error', (error) => {
+        console.log('Error while connecting to the database : ', error);
+    })
+})
+
+//Delete the collection before running each test
+beforeEach(function (done) {
+    mongoose.connection.collections.tests.drop(function () {
+        done();
+    })
+})</code></pre>
         </article>
     </section>
 

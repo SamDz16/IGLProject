@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: server.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: server.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//Requires
+var express = require('express');
+var server = express();
+var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
+const Astudent = require('./models/student');
+const functionPermuter = require('./function/permuter');
+const MongoClient = require('mongodb').MongoClient;
+
+//View Engine - EJS
+server.set('view engine', 'ejs');
+
+//Uses
+server.use('/assets', express.static('./assets'));
+
+//Routers
+server.get('/', function (req, res, next) {
+	res.render('choixUtilisateur');
+});
+
+server.post('/', bodyParser.urlencoded({
+	extended: true
+}), (req, res) => {
+	var choice = req.body;
+	if (choice.admin == 'on') {
+		res.redirect('/admin');
+	} else {
+		if (choice.student == 'on') {
+			res.redirect('/etudiant');
+		} else {
+			res.redirect('/');
+		}
+	}
+});
+
+server.get('/etudiant', function (req, res) {
+	res.render('Etudiant');
+});
+
+server.post('/etudiant', bodyParser.urlencoded({
+	extended: true
+}), (req, res, next) => {
+
+	//Connect to database
+	mongoose.connect('mongodb://localhost:27017/PERMUTATION', {
+		useUnifiedTopology: true,
+		useNewUrlParser: true
+	});
+
+	//Testing the connection to the database
+	mongoose.connection.once('open', () => {
+       /**
+		* Student information
+		* @type {object} 
+		*/
+		var student = new Astudent({
+			nom: req.body.nom,
+			prenom: req.body.prenom,
+			matricule: req.body.matricule,
+			email: req.body.email,
+			groupeA: parseInt(req.body.grA),
+			groupeV: parseInt(req.body.grV)
+		});
+
+		if (student.groupeA != student.groupeV) {
+			Astudent.findOne({
+				matricule: student.matricule,
+			}).then(function (result) {
+				if (result === null) {
+
+					//The student doesn't exist in the database
+					student
+						.save()
+						.then(() => {
+
+							console.log('The student : ' + student.nom + ' has been added to the database successfully');
+
+							Astudent.countDocuments({}, function (err, numberDoc) {
+
+								console.log(numberDoc);
+
+								var numberDocCopy = numberDoc;
+								if (numberDocCopy >= 2) {
+
+									console.log('\n\nLaunching the permutation function ...');
+									functionPermuter();
+
+								} else {
+									if (numberDocCopy == 0) {
+										console.log("The database is empty !")
+									} else {
+										//numberDocCopy == 1
+										console.log('There is just one student in the database')
+									}
+								}
+							})
+						})
+				} else {
+
+					// The matricule is the same => the student exists
+					//The student is going to be updated !
+					Astudent.findOneAndUpdate({
+						nom: result.nom,
+						prenom: result.prenom,
+						email: result.email,
+						groupeA: result.groupeA,
+						groupeV: result.groupeV,
+					}, {
+						nom: req.body.nom,
+						prenom: req.body.prenom,
+						email: req.body.email,
+						groupeA: parseInt(req.body.grA),
+						groupeV: parseInt(req.body.grV)
+					}).then(() => {
+						console.log('The student has been successfully updated !')
+					})
+				}
+
+			})
+		} else {
+			console.log('You entered the same group !')
+		}
+		res.redirect('/');
+	}).on('error', (error) => {
+		console.log('Error while connecting to the database : ', error);
+	})
+})
+/** 
+ * @module Consultation */
+ /** see {@tutorial Consultation_tuto }
+ */ 
+
+server.post('/Consultation', function (req, res, next) {
+	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', {
+		useUnifiedTopology: true
+	}, (err, client) => {
+		// console.log('connected to mongo');
+		const db = client.db();
+		db.collection('requests').find().toArray().then((demande) => {
+			res.render('Consultation', {
+				demande: demande
+			});
+		});
+		client.close();
+	});
+});
+
+//Admin part
+server.get('/admin', function (req, res, next) {
+	res.render('admin')
+});
+
+//Server part
+server.listen(7000, () => {
+	console.log('The server is listening ...');
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AddStudentTest.html">AddStudentTest</a></li><li><a href="module-Connection_to_database.html">Connection_to_database</a></li><li><a href="module-Consultation.html">Consultation</a></li><li><a href="module-delete_student_test.html">delete_student_test</a></li><li><a href="module-find_student_test.html">find_student_test</a></li><li><a href="module-permuter_addition.html">permuter_addition</a></li><li><a href="module-selenium.html">selenium</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-Consultation_tuto.html">Consultation_tuto</a></li><li><a href="tutorial-Docker_tuto.html">Docker_tuto</a></li><li><a href="tutorial-test-tutorials.html">test-tutorials</a></li></ul><h3>Global</h3><ul><li><a href="global.html#student">student</a></li><li><a href="global.html#student_permut">student_permut</a></li><li><a href="global.html#student_test">student_test</a></li><li><a href="global.html#studentSchema">studentSchema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Jan 01 2020 23:03:12 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

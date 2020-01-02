@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/student_test.js</title>
+    <title>JSDoc: Source: test/findStudent_test.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/student_test.js</h1>
+    <h1 class="page-title">Source: test/findStudent_test.js</h1>
 
     
 
@@ -26,35 +26,55 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+            <pre class="prettyprint source linenums"><code>/** 
+ * See {@tutorial test-tutorials}
+ * @module find_student_test */ 
 
-/**
- * Create the schema of the student for testing 
- * {@link student_permuts}
- */
+const assert = require('assert');
+const Astudent = require('../models/student_test');
 
-const studentSchema = new schema({
-    nom: String,
-    prenom: String,
-    matricule: String,
-    email: String,
-    groupeA: Number,
-    groupeV: Number
-});
+//Describe the tests
+describe("Find A Student In The Database", () => {
 
-/**
- * Create the model of the student for testing */
+    var student;
+    //Add a new student before making te first test with the name of 'studentName' to the collection for the tests
+    beforeEach((done) => {
+        student = new Astudent({
+            nom: 'studentName',
+            prenom: 'studentLastName',
+            matricule: '17/000',
+            email: 'ex_exemple@esi.dz',
+            groupeA: 5,
+            groupeV: 1
+        })
 
+        student
+            .save()
+            .then(() => {
+                done();
+            })
+    })
+    //Create new tests
+    it('OK, finds a student in the permutation database with the name of "studentName"', (done) => {
 
-const student_test = mongoose.model('test', studentSchema);
+        Astudent.findOne({
+            nom: 'studentName'
+        }).then(function (result) {
+            assert(result.nom === 'studentName');
+            done();
+        })
+    })
 
-/**
- * Module the student schema for testing.
- *
- * @type {const}
- */
-module.exports = student_test;</code></pre>
+    it('OK, finds a student in the permutation database by ID', (done) => {
+
+        Astudent.findOne({
+            _id: student._id
+        }).then(function (result) {
+            assert(result._id.toString() === student._id.toString());
+            done();
+        })
+    })
+})</code></pre>
         </article>
     </section>
 
