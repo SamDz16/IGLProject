@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>addStudent test Tutorial</title>
+  </head>
+  <body> 
+<h1>add student test</h1>
+    <p>
+            we use Mocha library specifically describe() and it() functions
+            <ul> 
+                  <li>  1. `describe()` is merely for grouping, which you can nest as deep</li>  
+                  <li>`it()` is a test case  </li> 
 
+            </ul>
+            
+                    example 
+                    <li> nom: 'studentName'</li>
+                   <li> prenom: 'studentLastName'</li>
+                    <li> matricule : '17/000'</li>
+                    <li> email: 'ex_exemple@esi.dz'</li>
+                    <li> groupeA :5</li>
+                    <li >groupeV : 1 </li>
+    </p> 
+    <h1>connection test </h1>
+    <p>
+            we use moongoose to test our connection to database
+            <ul> 
+                  <li>  1. we connect to database using moongoose connect</li>  
+                  <li> 2.we test the connection using our mocha library specifically done() function where we display errors if there are any </li> 
+
+            </ul>
+            
+    </p> 
+
+    <h1>delete student test</h1>
+    <p>
+            we use Mocha library using describe () ,beforeeach() , functions of the library
+            <ol> 
+                  <li> we Add a new student before making the first test with the name of 'studentName' to the collection for the tests</li>  
+                  <li> we test with the example below where we delete the student based on his ID  </li>  
+            </ol> 
+                 <ul>
+                     <li> nom: 'studentName'</li>
+                     <li> prenom: 'studentLastName'</li>
+                     <li> matricule :'17/000'</li>
+                     <li> email :'ex_exemple@esi.dz'</li>
+                     <li> groupeA :5</li>
+                     <li >groupeV : 1 </li>
+
+                 </ul>
+    </p>  
+</p> 
+
+<h1>find student test</h1>
+<p>
+        we use Mocha library using describe () ,beforeeach() , functions of the library
+        <ol> 
+              <li> we Add a new student before making the first test with the name of 'studentName' to the collection for the tests</li>  
+              <li> we test with the example below where we search the student based on his ID  </li>  
+        </ol> 
+             <ul>
+                 <li> nom: 'studentName'</li>
+                 <li> prenom: 'studentLastName'</li>
+                 <li> matricule :'17/000'</li>
+                 <li> email :'ex_exemple@esi.dz'</li>
+                 <li> groupeA :5</li>
+                 <li >groupeV : 1 </li>
+
+             </ul>
+</p>  
+<h1>Update student test</h1>
+<p>
+        we use Mocha library using describe () ,it() functions  explained up and beforeeach() function  that hooks to run
+         before/after first/each it() or describe().
+        <ol> 
+              <li> we Add a new student before making the first test with the name of 'studentName' to the collection for the tests</li>  
+              <li> we test with the example below where we search the student based on his ID and then update its information  </li>  
+        </ol> 
+             <ul>
+                 <li> nom: 'studentName'</li>
+                 <li> prenom: 'studentLastName'</li>
+                 <li> matricule :'17/000'</li>
+                 <li> email :'ex_exemple@esi.dz'</li>
+                 <li> groupeA :5</li>
+                 <li >groupeV : 1 </li>
+
+             </ul>
+</p>  
+  </body>
+</html>
