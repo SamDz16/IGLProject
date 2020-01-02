@@ -1,3 +1,7 @@
+/** 
+ * See {@tutorial test-tutorials}
+ * @module Connection_to_database */ 
+
 const mongoose = require('mongoose');
 
 
