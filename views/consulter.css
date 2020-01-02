@@ -1,0 +1,125 @@
+*{
+  margin: 0px;
+  padding: 0px;
+
+}
+.row {
+  width: 100%;
+  height: 80px;
+   background-color: rgba(0, 0, 0, .7);
+
+}
+
+.avatar-img {
+  width: 5%;
+  height: 80%;
+  margin-top: 10px;
+  margin-right: 600px;
+  
+}
+body{
+  background-image: url("./back6.jpg");
+  background-attachment :fixed;
+  background-size: cover;
+  text-align: center;
+  margin-bottom: 0px;
+
+
+}
+
+
+.main-nav {
+  float: right;
+  list-style: none;
+  margin-top: 30px;
+  margin-right: 70px;
+}
+.main-nav li {
+  display: inline-block;
+}
+.main-nav li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+}
+.main-nav li.active a {
+  border: 1px solid white;
+  border-radius: 8px;
+}
+.main-nav li a:hover {
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: grey;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  cursor: help; /* On change le curseur par défaut par un curseur d'aide. */
+}
+a span {
+  position: absolute;
+  margin-top: 23px;
+  margin-left: -35px;
+  color: white;
+  background: rgba(0, 0, 0, .9);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+  transform: scale(0) rotate(-12deg);
+  transition: all 0.5s;
+  opacity: 0;
+}
+a:hover span, a:focus span {
+
+  transform: scale(1) rotate(0);
+  opacity: 1;
+}
+h1{
+	font-size: 25px;
+   font-family: "Comic Sans MS", cursive, sans-serif;
+   text-align: center;
+   margin-top: 70px;
+   color: white;
+}
+.lina{
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.7cm;
+	min-width: 900px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0 , 0 , 0 , 0.15);
+}
+.lina thead tr{
+	background-color: #0099ff;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 12px 15px; 
+	border-radius: 5px 5px 0 0;
+}
+
+.lina td{
+	padding: 10px 13px; 
+	
+}
+.lina tbody tr{
+	border-bottom: 1px solid #dddddd;
+}
+.lina tbody tr:nth-of-type(even) {
+	background-color: #b3e0ff;
+}
+.lina tbody tr:last-of-type {
+	border-bottom: 2px  solid #5882FA;
+}
+.lina tbody tr.active-row{
+	font-weight: bold;
+	color: #5882FA;
+}
+.lidiya{
+	margin-left: 200px;
+}
