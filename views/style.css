@@ -1,0 +1,254 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+
+#sidebar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 270px;
+  height: 100vh;
+  background: #1a1a1a;
+  text-align: center;
+  transform-origin: left;
+  transform: perspective(1200px)rotateY(90deg);
+  transition: all 400ms ease;
+}
+
+.back {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.back img {
+  width: 100%;
+  height: 100%;
+}
+
+#sidebar ul {
+  margin-top: 120px;
+}
+
+#sidebar ul img {
+  margin-top: -70px;
+}
+
+#sidebar ul li {
+  font-size: 20px;
+  width: 100%;
+  height: 80px;
+  border-bottom: 2px solid #222222;
+  line-height: 30px;
+  color: white;
+}
+
+#sidebar ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+#sidebar ul li a:hover {
+  color: DarkTurquoise;
+}
+
+#sidebar.active {
+  transform: perspective(1200px);
+}
+
+#toggle-btn {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+
+#toggle-btn.active {
+  left: 300px;
+  top: 20px;
+  transition: left 200ms linear 0ms, transform 300ms ease 100ms;
+}
+
+#toggle-btn span {
+  position: relative;
+  top: 0px;
+  display: block;
+  background: #1a1a1a;
+  width: 30px;
+  height: 5px;
+  margin: 5px 0px;
+  cursor: pointer;
+  transition: transform 300ms ease 200ms;
+}
+
+#toggle-btn.active span:nth-child(1) {
+  top: 10px;
+  transform: rotate(45deg);
+}
+
+#toggle-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+#toggle-btn.active span:nth-child(3) {
+  top: -10px;
+  transform: rotate(-45deg);
+}
+
+.avatar {
+  height: 250px;
+  width: 250px;
+  border-radius: 50px;
+  margin-left: 30%;
+}
+
+.avatar-img {
+  width: 70%;
+  height: 140%;
+}
+
+.box {
+   width: 620px;
+  height: 280px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 25px 30px;
+  border-radius: 8px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 5px;
+  width: 500px;
+  transition: all 0.5s;
+  cursor: pointer;
+  border: 1px solid white;
+  margin-left: 30px;
+  margin-top: 25px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover {
+  background-color: #20B2AA;
+  transition: none;
+  border: 1px solid #20B2AA;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+input[type="submit"] {
+  position: absolute;
+  margin-left: 1250px;
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  background: #fafafa;
+  box-shadow: 2px 2px 8px #aaa;
+  font: bold 20px Arial;
+  border-radius: 50%;
+  color: black;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #20B2AA;
+  transition: 0.5s;
+}
+
+.button-nbr {
+  margin-left: 1285px;
+  position: absolute;
+  margin-top: 19px;
+  width: 40px;
+  height: 40px;
+  background: #20B2AA;
+  box-shadow: 2px 2px 8px #aaa;
+  font: bold 10px Arial;
+  font-size: 20px;
+  border-radius: 50%;
+  color: black;
+  cursor: pointer;
+}
+.dateimpo {
+  font-size: 33px; /* change icon size */
+  display: block;
+  position: absolute;
+  margin-left: 1130px;
+  margin-top: 100px;
+  width: 6em;
+  height: 6em;
+  background-color: #fff;
+  border-radius: 0.6em;
+  box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+  overflow: hidden;
+  text-align: center;
+}
+.dr
+{
+  display: block;
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  color: #fff;
+  background-color: DarkTurquoise;
+  border-bottom: 1px dashed #00CED1;
+  box-shadow: 0 2px 0 #6495ED;
+}
+p
+{
+  font-weight: bold;
+  color: #2f2f2f;
+  font-size: 25px;
+}
+.fr
+{
+  display: block;
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  color: #fff;
+  background-color: DarkTurquoise;
+  border-bottom: 1px dashed #00CED1;
+  box-shadow: 0 2px 0 #6495ED;
+}

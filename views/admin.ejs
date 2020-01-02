@@ -1,26 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bienvenue</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Style des icons -->
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="style.css" type="text/css" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../assets/style.css">
-    <title>Informations etudiant</title>
+     <script type="text/javascript" src="script_daay.js"></script>
+     <!-- Style et script  du calendrier -->
+     <link rel="stylesheet" href="calendar1.css" type="text/css" />
+     <script type="text/javascript" src="calendar.js"></script>
+     <!-- icon de la page -->
+     <link rel="SHORTCUT ICON" href="./icon.png" />
+     <!-- ******** -->
 </head>
+<body onload="refresh_jour();refresh_date();refresh_mois()">
+  <div class="back">
+    <img src="./back6.jpg" alt="stage">
+  </div>
+  <div id="sidebar">
+    <ul>
+      <li><img src="./avatar.png" / alt="avatar" class="avatar-img"></li>
+      
+      <li><a href="admin.ejs"><i class="fa fa-home"></i><br/>Accueil</a></li>
+      <li><a href="aide.php"><i class="fa fa-question-circle-o"></i><br/>Aide</a></li>
+      <li><a href="mdp2.php"><i class="fa fa-lock"></i><br/>A propos</a></li>
+      <li><a href="deconnexion.php"><i class="fa fa-power-off"></i><br/>Deconnexion</a></li>
+    </ul>
+  </div>
+  <div id="toggle-btn" onclick="toggleSidebar(this)">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+   <div class="box">
+    <a href="consulter.html"><button class="button" style="vertical-align:middle"><span><i class="fa fa-calendar"></i>  Consulter la liste des purmutations </span></button><br/></a>
+    <a href="stat.php">  <button class="button" style="vertical-align:middle"><span><i class="fa fa-area-chart"></i>  Voir les statistiques </span></button><br/></a>
+    <a href="propo.php">  <button class="button" style="vertical-align:middle"><span><i class="fa fa-group"></i>  Voir la liste des groupes</span></button></a>
+  </div>
 
-<body>
-    <h1>Vous etes l'admin de cette page</h1>
-    <br>
-    <form action="/Admin" method="post">
+  <button class="button-nbr" style="vertical-align:middle"><i class="fa fa-bell-o"></button>
 
-        <button type="submit" formaction="/Consultation" id="btn">Consulter</button>
-        <!-- <button type="submit" formaction="/Permutation" id="btn">Permuter</button> -->
-    </form>
-    <br>
-    <form action="/" method="POST">
-        <input type="submit" value="Acceuil" id="btn">
-    </form>
+  <form action="notification.php" method="POST" >
+    <input style= "color: white;border:none;background-color: red;";
+        class="submit" type="submit" name="cnx" value="2"/>
+  </form>
+
+  <!-- Calendrier -->
+  <time class="icon">
+      <em id="jour"></em>
+      <strong id="mois"></strong>
+      <span id="date"></span>
+      </time>
+  <!-- *************** -->
+
 </body>
-
 </html>
