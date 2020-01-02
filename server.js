@@ -16,7 +16,9 @@ server.use('/assets', express.static('./assets'));
 
 //Routers
 server.get('/', function (req, res, next) {
+
 	res.render('choixUtilisateur');
+
 });
 
 server.post('/', bodyParser.urlencoded({
@@ -126,6 +128,23 @@ server.post('/etudiant', bodyParser.urlencoded({
 		console.log('Error while connecting to the database : ', error);
 	})
 })
+
+
+server.get('/Consultation', function (req, res, next) {
+	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', {
+		useUnifiedTopology: true
+	}, (err, client) => {
+		// console.log('connected to mongo');
+		const db = client.db();
+		db.collection('requests').find().toArray().then((demande) => {
+			// console.log(demande);
+			res.render('Consultation', {
+				demande: demande
+			});
+		});
+		client.close();
+	});
+});
 
 server.post('/Consultation', function (req, res, next) {
 	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', {

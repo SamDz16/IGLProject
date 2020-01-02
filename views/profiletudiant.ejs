@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Bienvenue</title>
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-     <!-- Style des icons -->
-     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <link rel="stylesheet" href="style2.css" type="text/css" />
-     <script type="text/javascript" src="script_daay.js"></script>
-     <!-- Style et script  du calendrier -->
-     <link rel="stylesheet" href="calendar1.css" type="text/css" />
-     <script type="text/javascript" src="calendar.js"></script>
-     <!-- icon de la page -->
-     <link rel="SHORTCUT ICON" href="./icon.png" />
-     <!-- ******** -->
+  <title>Bienvenue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Style des icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/style2.css" type="text/css" />
+  <script type="text/javascript" src="../time_lamiss.js/script_daay.js"></script>
+  <!-- Style et script  du calendrier -->
+  <link rel="stylesheet" href="../assets/calendar1.css" type="text/css" />
+  <script type="text/javascript" src="../time_lamiss.js/calendar.js"></script>
+  <!-- icon de la page -->
+  <!-- <link rel="SHORTCUT ICON" href="./icon.png" /> -->
+  <!-- ******** -->
 </head>
+
 <body onload="refresh_jour();refresh_date();refresh_mois()">
-	<div class="back">
-    <img src="./back6.jpg" alt="stage">
+  <div class="back">
+    <img src="../images/back6.jpg" alt="stage">
   </div>
   <div id="sidebar">
     <ul>
-      <li><img src="./avatar.png" / alt="avatar" class="avatar-img"></li>
-      
-      <li><a href="profiladmin.php"><i class="fa fa-home"></i><br/>Accueil</a></li>
-      <li><a href="aide.php"><i class="fa fa-question-circle-o"></i><br/>Aide</a></li>
-      <li><a href="mdp2.php"><i class="fa fa-lock"></i><br/>A propos</a></li>
-      <li><a href="deconnexion.php"><i class="fa fa-power-off"></i><br/>Deconnexion</a></li>
+      <li><img src="../images/avatar.png" / alt="avatar" class="avatar-img"></li>
+
+      <li><a href="profiladmin.php"><i class="fa fa-home"></i><br />Accueil</a></li>
+      <li><a href="aide.php"><i class="fa fa-question-circle-o"></i><br />Aide</a></li>
+      <li><a href="mdp2.php"><i class="fa fa-lock"></i><br />A propos</a></li>
+      <li><a href="deconnexion.php"><i class="fa fa-power-off"></i><br />Deconnexion</a></li>
     </ul>
   </div>
   <div id="toggle-btn" onclick="toggleSidebar(this)">
@@ -34,27 +36,33 @@
     <span></span>
     <span></span>
   </div>
-   <div class="box">
-     <a href="demandeprmt.html"><button class="button" style="vertical-align:middle"><span><i class="fa fa-wpforms"></i>  Demande du permutation </span></button><br/></a>
-    <a href="consulter.html"><button class="button" style="vertical-align:middle"><span><i class="fa fa-calendar"></i>  Consulter la liste des purmutations </span></button><br/></a>
-    <a href="propo.php">  <button class="button" style="vertical-align:middle"><span><i class="fa fa-group"></i>  Voir la liste des groupes</span></button></a>
+  <div class="box">
+    <a href="../views/Etudiant.ejs"><button class="button" style="vertical-align:middle"><span><i
+            class="fa fa-wpforms"></i>
+          Demande du permutation </span></button><br /></a>
+    <a href="../views/Consultation.ejs"><button class="button" style="vertical-align:middle"><span><i
+            class="fa fa-calendar"></i>
+          Consulter la liste des purmutations </span></button><br /></a>
+    <a href="propo.php"> <button class="button" style="vertical-align:middle"><span><i class="fa fa-group"></i> Voir la
+          liste des groupes</span></button></a>
   </div>
-   <button class="button-nbr" style="vertical-align:middle"><i class="fa fa-bell-o"></button>
+  <button class="button-nbr" style="vertical-align:middle"><i class="fa fa-bell-o"></button>
 
-  <form action="notification.php" method="POST" >
-    <input style= "color: white;border:none;background-color: red;";
-        class="submit" type="submit" name="cnx" value="1"/>
+  <form action="notification.php" method="POST">
+    <input style="color: white;border:none;background-color: red;" ; class="submit" type="submit" name="cnx"
+      value="1" />
   </form>
 
- 
+
 
   <!-- Calendrier -->
   <time class="icon">
-      <em id="jour"></em>
-      <strong id="mois"></strong>
-      <span id="date"></span>
-      </time>
+    <em id="jour"></em>
+    <strong id="mois"></strong>
+    <span id="date"></span>
+  </time>
   <!-- *************** -->
 
 </body>
+
 </html>

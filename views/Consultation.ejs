@@ -2,48 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../assets/style.css">
-    <link rel="stylesheet" type="text/css" href="consulter.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>Consultation des demandes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="stylesheet" href="../assets/style.css"> -->
+  <link rel="stylesheet" type="text/css" href="../assets/consulter.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Consultation des demandes</title>
 </head>
 
 <body>
-   <div class="row">
-      <img src="./avatar.png" / alt="avatar" class="avatar-img">
-           <ul class="main-nav">
+  <div class="row">
+    <!-- <img src="../images/avatar.png" / alt="avatar" class="avatar-img"> -->
+    <ul class="main-nav">
 
-             <li><a href="Home.php"><i class="fa fa-home"></i><span> Retourner à la page principale</span> &nbspACCUEIL</a></li>
-             <li   class="active"><a href="membres.php"><i class="fa fa-lock"></i><span> Cliquer ici pour vous deconnecter</span> &nbspDECONNEXION</a></li>
-             <li><a href="aide.php"><i class="fa fa-question-circle-o"></i><span> Obtenir de l'aide</span> &nbspAIDE</a></li>
-             <li><a href="a_propos.php"><i class="fa fa-info-circle"></i><span> Lire à propos de nous</span> &nbspA PROPOS</a></li>
-           </ul>
-         </div>
-         <h1 id="app">{{message}}</h1>
-         <div class="lidiya">
- <table class="lina" >
-             <thead>
-               <tr>
-                 <th>Nom</th>
-                 <th>Prenom</th>
-                 <th>Matricul</th>
-                 <th>Email</th>
-                 <th>Groupe actuel</th>
-                 <th>Groupe voulu</th>
-               </tr>
-             </thead>
-           <tbody>
+      <li><a href="/"><i class="fa fa-home"></i><span> Retourner à la page principale</span> &nbspACCUEIL</a>
+      </li>
+      <li class="active"><a href="membres.php"><i class="fa fa-lock"></i><span> Cliquer ici pour vous deconnecter</span>
+          &nbspDECONNEXION</a></li>
+      <li><a href="aide.php"><i class="fa fa-question-circle-o"></i><span> Obtenir de l'aide</span> &nbspAIDE</a></li>
+      <li><a href="a_propos.php"><i class="fa fa-info-circle"></i><span> Lire à propos de nous</span> &nbspA PROPOS</a>
+      </li>
+    </ul>
+  </div>
+  <h1 id="app">{{message}}</h1>
+  <div class="lidiya">
+    <table class="lina">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Matricul</th>
+          <th>Email</th>
+          <th>Groupe actuel</th>
+          <th>Groupe voulu</th>
+        </tr>
+      </thead>
+      <tbody>
         <% for (let dem of demande ) { %>
-         <tr>
-        <td><%=dem.nom %> </td>
-        <td><%=dem.prenom %> </td>
-        <td><%=dem.matricule %> </td>
-        <td><%=dem.email %> </td>
-        <td><%=dem.groupeA %> </td>
-        <td><%=dem.groupeV %> </td>
+        <tr>
+          <td><%=dem.nom %> </td>
+          <td><%=dem.prenom %> </td>
+          <td><%=dem.matricule %> </td>
+          <td><%=dem.email %> </td>
+          <td><%=dem.groupeA %> </td>
+          <td><%=dem.groupeV %> </td>
         </tr>
         <%}%>
 
@@ -63,7 +66,3 @@
 
 </body>
 </html>
-
-
-
-
