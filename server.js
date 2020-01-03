@@ -146,9 +146,8 @@ server.get('/Consultation', function (req, res, next) {
 	});
 }); 
 /** 
- * @module Consultation */
- /** see {@tutorial Consultation_tuto }
- */ 
+ * See {@tutorial Consultation_tuto}
+ * @module Consultation */ 
 
 server.post('/Consultation', function (req, res, next) {
 	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', {
