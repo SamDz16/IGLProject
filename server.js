@@ -80,8 +80,6 @@ server.post('/etudiant', bodyParser.urlencoded({
 
 							Astudent.countDocuments({}, function (err, numberDoc) {
 
-								console.log(numberDoc);
-
 								var numberDocCopy = numberDoc;
 								if (numberDocCopy >= 2) {
 
@@ -144,11 +142,11 @@ server.get('/Consultation', function (req, res, next) {
 		});
 		client.close();
 	});
-}); 
+});
 /** 
  * @module Consultation */
- /** see {@tutorial Consultation_tuto }
- */ 
+/** see {@tutorial Consultation_tuto }
+ */
 
 server.post('/Consultation', function (req, res, next) {
 	MongoClient.connect('mongodb://localhost:27017/PERMUTATION', {
