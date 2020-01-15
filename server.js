@@ -143,6 +143,7 @@ server.get('/Consultation', function (req, res, next) {
 		client.close();
 	});
 });
+
 /** 
  * @module Consultation */
 /** see {@tutorial Consultation_tuto }
