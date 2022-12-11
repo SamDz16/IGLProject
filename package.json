@@ -21,7 +21,7 @@
 	"dependencies": {
 		"body-parser": "^1.19.0",
 		"ejs": "^2.7.4",
-		"express": "^4.17.1",
+		"express": "^4.17.3",
 		"mocha": "^6.2.2",
 		"mockgoose": "^8.0.4",
 		"mongodb": "^3.3.4",
